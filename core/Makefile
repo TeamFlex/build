@@ -1613,6 +1613,7 @@ endif
 
 # Depending on the various images guarantees that the underlying
 # directories are up-to-date.
+include $(BUILD_SYSTEM)/tasks/oem_image.mk
 $(BUILT_TARGET_FILES_PACKAGE): \
 		$(INSTALLED_BOOTIMAGE_TARGET) \
 		$(INSTALLED_RADIOIMAGE_TARGET) \
@@ -1621,6 +1622,7 @@ $(BUILT_TARGET_FILES_PACKAGE): \
 		$(INSTALLED_USERDATAIMAGE_TARGET) \
 		$(INSTALLED_CACHEIMAGE_TARGET) \
 		$(INSTALLED_VENDORIMAGE_TARGET) \
+		$(INSTALLED_OEMIMAGE_TARGET) \
 		$(INSTALLED_ANDROID_INFO_TXT_TARGET) \
 		$(SELINUX_FC) \
 		$(built_ota_tools) \
@@ -1729,6 +1731,11 @@ ifdef BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE
 	@# Contents of the vendor image
 	$(hide) $(call package_files-copy-root, \
 		$(TARGET_OUT_VENDOR),$(zip_root)/VENDOR)
+endif
+ifdef BOARD_OEMIMAGE_FILE_SYSTEM_TYPE
+	@# Contents of the oem image
+	$(call package_files-copy-root, \
+		$(TARGET_OUT_OEM),$(zip_root)/OEM)
 endif
 	@# Extra contents of the OTA package
 	$(hide) mkdir -p $(zip_root)/OTA/bin

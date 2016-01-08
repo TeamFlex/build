@@ -35,7 +35,7 @@ PRODUCT_PACKAGES := \
 	libWnnJpnDic \
 	LiveWallpapersPicker \
 	Mms \
-	Music \
+	FlayrMusic \
 	OpenWnn \
 	Protips \
 	rild \

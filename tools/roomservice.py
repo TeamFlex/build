@@ -42,11 +42,11 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/flex_manifest.xml"
-custom_default_revision = "mm6.0"
+custom_local_manifest = ".repo/local_manifests/roomservice.xml"
+custom_default_revision = "flayr"
 custom_dependencies = "flex.dependencies"
-org_manifest = "FLEX"  # leave empty if org is provided in manifest
-org_display = "FLEX"  # needed for displaying
+org_manifest = "flex-devices"  # leave empty if org is provided in manifest
+org_display = org_manifest  # needed for displaying
 
 github_auth = None
 
@@ -239,7 +239,7 @@ def fetch_dependencies(repo_path, fallback_branch=None):
 
     if syncable_repos:
         print('Syncing dependencies')
-        os.system('repo sync --force-sync %s' % ' '.join(syncable_repos))
+        os.system('repo sync --force-sync --quiet %s' % ' '.join(syncable_repos))
 
     for deprepo in syncable_repos:
         fetch_dependencies(deprepo)
@@ -363,7 +363,7 @@ def main():
         add_to_manifest(adding, fallback_branch)
 
         print("Syncing repository to retrieve project.")
-        os.system('repo sync --force-sync %s' % repo_path)
+        os.system('repo sync --force-sync --quiet %s' % repo_path)
         print("Repository synced!")
 
         fetch_dependencies(repo_path, fallback_branch)

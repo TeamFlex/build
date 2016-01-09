@@ -1878,12 +1878,14 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 
 FLEX_TARGET_PACKAGE := $(PRODUCT_OUT)/$(FLEX_MOD_VERSION).zip
 
-.PHONY: otapackage bacon bootzip
+.PHONY: otapackage bacon flex flayr bootzip
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(FLEX_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(FLEX_TARGET_PACKAGE) > $(FLEX_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_CYN}"Package Complete: $(FLEX_TARGET_PACKAGE)"${CL_RST}
+	@echo -e ${CL_CYN}"FlayrOS Package Ready: $(FLEX_TARGET_PACKAGE)"${CL_RST}
+flex: bacon
+flayr: bacon
 
 bootzip: bootimage
 	$(BOOT_ZIP_FROM_IMAGE_SCRIPT) \

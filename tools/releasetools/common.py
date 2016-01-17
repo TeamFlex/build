@@ -1312,7 +1312,7 @@ class BlockDifference(object):
                          self.device, ranges_str,
                          self._HashZeroBlocks(self.tgt.extended.size())))
       script.Print(" ")
-      script.Print("OrionOs System files verified.")
+      script.Print("FlayrOS essentials verified, you are good to go :)")
       script.AppendExtra(
           'else\n'
           '  abort("%s partition has unexpected non-zero contents after OTA '

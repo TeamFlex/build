@@ -43,7 +43,7 @@ DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/roomservice.xml"
-custom_default_revision = "flayr"
+custom_default_revision = "flayrmm"
 custom_dependencies = "flex.dependencies"
 org_manifest = "flex-devices"  # leave empty if org is provided in manifest
 org_display = org_manifest  # needed for displaying
